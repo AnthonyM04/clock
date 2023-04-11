@@ -5,19 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clock</title>
-    <style>
-    #root{ border: 1px solid red}
-    </style>
+    <link rel="stylesheet" href="./src/styles/index.css"/>
 </head>
 
 
 <body>
-    <div id="root">oasjfsaj</div>
+    <div id="root">CLOCK</div>
 
-    <h1>HI There</h1>
-
+    <h1>Well hello There</h1>
+    
     <script>
-        document.querySelector('h1').innerHTML = 'Yo there son!'
+        
+        const getClock = () => {
+            // get new instance of the current date
+            const today = new Date();
+
+            // convert
+            let hours = today.getHours();
+            let minutes = today.getMinutes();
+            let secs = today.getSeconds();
+            let millisecond = today.getMilliseconds();
+
+            // assemble
+            let currentTime = `${hours} ${minutes} ${secs} ${milliseconds}`;
+
+            // check leading zero
+            hour = checkLeadingZero(hour);
+            second = checkLeadingZero(second)
+
+            document.querySelector("#root").innerHTML = currentTime
+            
+            // repopulate what (getClock) how many times per millisecond (1000) ?
+            // one second is 1000 milliseconds
+            setTimeout(getClock,200);
+        }
+        const checkLeadingZero = paramTime=> {
+            paramTime > 10
+                ? paramTime = '0'+paramTime
+                : null  
+
+                return paramTime
+        }
+
+        getClock();
+
     </script>
 </body>
 </html>
